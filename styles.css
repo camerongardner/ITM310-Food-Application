@@ -176,6 +176,28 @@ footer {
     text-align: center;
     padding: 15px;
 }
+#auth-container, #sign-up-container {
+    padding: 20px;
+}
+#auth-container input, #sign-up-container input {
+    padding: 8px;
+    margin-bottom: 15px;
+    width: 300px;
+}
+#auth-container h2, #sign-up-container h2 {
+    margin-bottom: 20px;
+}
+
+#sign-in-form button, #sign-up-form button {
+    padding: 10px;
+    width: 100px;
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
 
 /* Responsive Styles */
 @media (max-width: 768px) {
