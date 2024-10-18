@@ -178,7 +178,15 @@ footer {
 }
 #auth-container, #sign-up-container {
     padding: 20px;
+    width: fit-content;
+    margin: 0 auto;
 }
+
+#sign-in-form, #sign-up-form {
+    display: flex;
+    flex-direction: column;
+}
+
 #auth-container input, #sign-up-container input {
     padding: 8px;
     margin-bottom: 15px;
