@@ -58,7 +58,7 @@ document.getElementById('filter-form').addEventListener('submit', function (e) {
 
 const restaurants = [
     {
-        img: 'restaurant1.jpg',
+        img: '/images/keoma-oran-OB2j3hsguzQ-unsplash.jpg',
         name: 'Restaurant Name 1',
         cuisine: 'italian', // Use lowercase
         priceRange: '$$',
@@ -67,7 +67,7 @@ const restaurants = [
         status: 'Open Now'
     },
     {
-        img: 'restaurant2.jpg',
+        img: '/images/clay-banks-hwLAI5lRhdM-unsplash.jpg',
         name: 'Restaurant Name 2',
         cuisine: 'chinese',
         priceRange: '$',
