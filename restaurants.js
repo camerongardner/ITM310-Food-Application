@@ -58,8 +58,8 @@ document.getElementById('filter-form').addEventListener('submit', function (e) {
 
 const restaurants = [
     {
-        img: '/images/keoma-oran-OB2j3hsguzQ-unsplash.jpg',
-        name: 'Restaurant Name 1',
+        img: './images/imen-chakir-0POulTFqgjc-unsplash.jpg',
+        name: 'Passerini',
         cuisine: 'italian', // Use lowercase
         priceRange: '$$',
         distance: '0.5 miles away',
@@ -67,8 +67,8 @@ const restaurants = [
         status: 'Open Now'
     },
     {
-        img: '/images/clay-banks-hwLAI5lRhdM-unsplash.jpg',
-        name: 'Restaurant Name 2',
+        img: './images/clay-banks-hwLAI5lRhdM-unsplash.jpg',
+        name: 'Golden Dragon Bistro',
         cuisine: 'chinese',
         priceRange: '$',
         distance: '1.0 miles away',
