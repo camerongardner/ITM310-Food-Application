@@ -58,22 +58,40 @@ document.getElementById('filter-form').addEventListener('submit', function (e) {
 
 const restaurants = [
     {
-        img: './images/imen-chakir-0POulTFqgjc-unsplash.jpg',
-        name: 'Passerini',
-        cuisine: 'italian', // Use lowercase
-        priceRange: '$$',
-        distance: '0.5 miles away',
-        rating: '4.5/5',
-        status: 'Open Now'
+        name: "Green Garden",
+        cuisine: "Vegan",
+        priceRange: "$$",
+        distance: "2 miles away",
+        rating: 4.5,
+        status: "Open",
+        img: "images/clay-banks-hwLAI5lRhdM-unsplash.jpg",
+        dietaryOptions: ["Vegan", "Gluten-Free"],
+        spiceLevel: 2,
+        services: ["Dine-In", "Takeout", "Delivery"]
     },
     {
-        img: './images/clay-banks-hwLAI5lRhdM-unsplash.jpg',
-        name: 'Golden Dragon Bistro',
-        cuisine: 'chinese',
-        priceRange: '$',
-        distance: '1.0 miles away',
-        rating: '4.2/5',
-        status: 'Open Now'
+        name: "Spice Symphony",
+        cuisine: "Indian",
+        priceRange: "$$$",
+        distance: "5 miles away",
+        rating: 4.7,
+        status: "Open",
+        img: "images/fakhrir-amrullah-6I7nZBtnzkA-unsplash.jpg",
+        dietaryOptions: ["Vegetarian"],
+        spiceLevel: 5,
+        services: ["Dine-In", "Delivery"]
     },
-    // Add more restaurants as needed
+    {
+        name: "Bella Italia",
+        cuisine: "Italian",
+        priceRange: "$$",
+        distance: "1 mile away",
+        rating: 4.3,
+        status: "Closed",
+        img: "images/imen-chakir-0POulTFqgjc-unsplash.jpg",
+        dietaryOptions: ["Vegetarian"],
+        spiceLevel: 1,
+        services: ["Dine-In", "Takeout"]
+    },
+    // Add more restaurant objects as needed
 ];

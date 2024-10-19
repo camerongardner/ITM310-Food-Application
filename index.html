@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Include Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script> <!-- Firestore SDK -->
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -86,31 +87,24 @@
 
         <section id="restaurant-list">
             <h2>Restaurants Near You</h2>
-            
-                <!-- Add more restaurant divs with appropriate data attributes -->
-            </section>
-            
-
-
-            <!-- Repeat the .restaurant div for more restaurants -->
+            <!-- Restaurants will be dynamically populated here -->
         </section>
 
         <section id="map">
             <h2>Map View</h2>
-            <!-- Map integration would go here -->
             <div id="map-placeholder">
-                <!-- Placeholder for map -->
                 <p>Map will display here.</p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 DineSmart. All rights reserved.</p>
+        <p>&copy; 2024 DineSmart. All rights reserved.</p>
     </footer>
 
     <!-- Include your app.js script -->
     <script src="restaurants.js" defer></script>
     <script src="app.js" defer></script>
+    <script src="utils.js" defer></script>
 </body>
 </html>
