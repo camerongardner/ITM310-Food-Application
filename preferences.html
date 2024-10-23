@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DineSmart - Preferences</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script> <!-- Firestore SDK -->
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>DineSmart</h1>
+        <nav>
+            <ul id="nav-menu1">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="restaurants.html">Restaurants</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="preferences.html">Preferences</a></li>
+                <!-- <li><a href="#" id="sign-out">Sign Out</a></li> -->
+                <!-- Navigation links will be populated by app.js -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="preferences">
+            <h2>Your Preferences</h2>
+            <form id="preferences-form">
+                <!-- Dietary Restrictions -->
+                <fieldset>
+                    <legend>Dietary Restrictions:</legend>
+                    <label><input type="checkbox" name="dietary" value="Vegan"> Vegan</label>
+                    <label><input type="checkbox" name="dietary" value="Vegetarian"> Vegetarian</label>
+                    <label><input type="checkbox" name="dietary" value="Gluten-Free"> Gluten-Free</label>
+                    <label><input type="checkbox" name="dietary" value="Nut-Free"> Nut-Free</label>
+                    <label><input type="checkbox" name="dietary" value="Dairy-Free"> Dairy-Free</label>
+                    <!-- Add more as needed -->
+                </fieldset>
+
+                <!-- Spice Level -->
+                <fieldset>
+                    <legend>Preferred Spice Level:</legend>
+                    <label>
+                        <input type="range" name="spiceLevel" min="0" max="5" step="1" value="2">
+                        <span id="spice-level-display">2</span> / 5
+                    </label>
+                </fieldset>
+
+                <!-- Dine-In / Takeout Preferences -->
+                <fieldset>
+                    <legend>Dine-In / Takeout Preferences:</legend>
+                    <label><input type="checkbox" name="service" value="Dine-In"> Dine-In</label>
+                    <label><input type="checkbox" name="service" value="Takeout"> Takeout</label>
+                    <label><input type="checkbox" name="service" value="Delivery"> Delivery</label>
+                </fieldset>
+
+                <button type="submit">Save Preferences</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DineSmart. All rights reserved.</p>
+    </footer>
+
+    <!-- Include your app.js script -->
+    <script src="preferences.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="utils.js" defer></script>
+</body>
+</html>
