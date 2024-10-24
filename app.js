@@ -120,21 +120,26 @@ function updateNavMenu(user) {
 }
 
 // Listen for authentication state changes
-auth.onAuthStateChanged((user) => {
-  if (user) {
-      console.log('User is signed in:', user.email);
-      // Hide auth forms
-      authContainer.style.display = 'none';
-      signUpContainer.style.display = 'none';
-      // Update navigation menu
-      updateNavMenu(user);
-  } else {
-      console.log('No user is signed in.');
-      // Show auth forms
-      authContainer.style.display = 'block';
-      // Update navigation menu
-      updateNavMenu(null);
-  }
+auth.onAuthStateChanged(async (user) => {
+    if (user) {
+        try {
+            const doc = await getUserPreferences(user.uid);
+            if (doc.exists) {
+                const preferences = doc.data();
+                console.log('User Preferences:', preferences);
+                // ... rest of the code ...
+            } else {
+                console.log('No preferences found for user:', user.uid);
+                displayAllRestaurants();
+            }
+        } catch (error) {
+            console.error('Error fetching preferences:', error);
+            displayAllRestaurants();
+        }
+    } else {
+        console.log('No user is signed in. Displaying all restaurants.');
+        displayAllRestaurants();
+    }
 });
 
 // Restaurants list code
@@ -170,4 +175,98 @@ restaurants.forEach(restaurant => {
   `;
 
   restaurantList.appendChild(restaurantDiv);
+});
+
+// Assist with AI
+
+// app.js
+
+// Function to display restaurants based on an array of restaurant names
+function displayRestaurants(recommendedRestaurants) {
+    restaurantList.innerHTML = ''; // Clear existing restaurants
+  
+    recommendedRestaurants.forEach(restaurantName => {
+      // Normalize the names for comparison
+      const normalizedRestaurantName = restaurantName.toLowerCase().trim();
+  
+      const restaurant = restaurants.find(r => r.name.toLowerCase().trim() === normalizedRestaurantName);
+  
+      if (restaurant) {
+        const restaurantDiv = createRestaurantDiv(restaurant);
+        restaurantList.appendChild(restaurantDiv);
+      } else {
+        console.warn(`Restaurant "${restaurantName}" not found in the restaurants array.`);
+      }
+    });
+  }
+
+// Helper function to create a restaurant div
+function createRestaurantDiv(restaurant) {
+    const restaurantDiv = document.createElement('div');
+    restaurantDiv.classList.add('restaurant');
+
+    // Set data attributes for filtering/search
+    restaurantDiv.setAttribute('data-cuisine', restaurant.cuisine.toLowerCase());
+    restaurantDiv.setAttribute('data-price', restaurant.priceRange);
+    restaurantDiv.setAttribute('data-distance', parseFloat(restaurant.distance));
+
+    restaurantDiv.innerHTML = `
+        <img src="${restaurant.img}" alt="Restaurant Image">
+        <div class="info">
+            <h3>${restaurant.name}</h3>
+            <p>${restaurant.cuisine} | ${restaurant.priceRange} | ${restaurant.distance}</p>
+            <p>Rating: ${restaurant.rating}</p>
+            <p>${restaurant.status}</p>
+            <div class="actions">
+                <button>View Menu</button>
+                <button>Reserve Table</button>
+            </div>
+        </div>
+    `;
+
+    return restaurantDiv;
+}
+
+function displayAllRestaurants() {
+    const allRestaurantNames = restaurants.map(r => r.name);
+    displayRestaurants(allRestaurantNames);
+}
+
+
+// AI integration
+
+// On page load or when the user navigates to the restaurant list
+window.addEventListener('DOMContentLoaded', () => {
+    const restaurantList = document.getElementById('restaurant-list');
+
+    auth.onAuthStateChanged(async (user) => {
+        if (user) {
+            try {
+                const doc = await getUserPreferences(user.uid);
+                if (doc.exists) {
+                    const preferences = doc.data();
+                    const prompt = prepareAIInput(preferences, restaurants);
+
+                    try {
+                        const responseText = await getPersonalizedRecommendations(prompt);
+                        const recommendedRestaurants = parseAIResponse(responseText);
+                        displayRestaurants(recommendedRestaurants);
+                    } catch (error) {
+                        console.error('Error getting recommendations:', error);
+                        // Fallback to displaying all restaurants
+                        displayAllRestaurants();
+                    }
+                } else {
+                    console.log('No preferences found. Displaying all restaurants.');
+                    displayAllRestaurants();
+                }
+            } catch (error) {
+                console.error('Error fetching preferences:', error);
+                displayAllRestaurants();
+            }
+        } else {
+            console.log('No user is signed in. Displaying all restaurants.');
+            displayAllRestaurants();
+        }
+    });
 });
