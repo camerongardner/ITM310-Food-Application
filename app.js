@@ -179,8 +179,6 @@ restaurants.forEach(restaurant => {
 
 // Assist with AI
 
-// app.js
-
 // Function to display restaurants based on an array of restaurant names
 function displayRestaurants(recommendedRestaurants) {
     restaurantList.innerHTML = ''; // Clear existing restaurants
